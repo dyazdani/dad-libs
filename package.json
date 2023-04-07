@@ -4,7 +4,9 @@
   "description": "App for playing mad libs",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "author": "dyazdani",
   "license": "NONE",
