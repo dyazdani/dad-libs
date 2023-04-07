@@ -1,0 +1,11 @@
+{
+  "name": "mad-libs",
+  "version": "1.0.0",
+  "description": "App for playing mad libs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "dyazdani",
+  "license": "NONE"
+}
