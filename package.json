@@ -7,5 +7,12 @@
     "test": "jest"
   },
   "author": "dyazdani",
-  "license": "NONE"
+  "license": "NONE",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }
