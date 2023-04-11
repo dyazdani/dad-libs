@@ -4,6 +4,7 @@ import Header from './components/common/Header';
 import StartPage from './components/start/StartPage';
 import StoryPage from './components/story/StoryPage';
 import WordEntryPage from './components/word_entry/WordEntryPage';
+import AppContent from './components/AppContent';
 
 const wordTypeList = ['Plural Noun', 'Adjective', 'Noun', 'Adjective', 'Plural Body Part', 'Plural Noun', 'Verb Ending in -ing', 'Plural Noun', 'Verb', 'Noun', 'Verb', 'Noun', 'Verb Ending in -ing', 'Plural Noun', 'Celebrity']
 
@@ -14,7 +15,7 @@ const Pages = {
   }
 
 const App = () => {
-    const [activePage, setActivePage] = useState('start');
+    const [activePage, setActivePage] = useState(Pages.START);
     const [chosenWords, setChosenWords] = useState([]);
 
     // helper function
@@ -36,26 +37,12 @@ const App = () => {
         }
     }    
 
-    let pageContent;
-
-    switch(activePage) {
-        case Pages.START:
-            pageContent = <StartPage handleClick={() => setActivePage('word_entry')}></StartPage>;
-            break;
-        case Pages.WORD_ENTRY:
-            pageContent = <WordEntryPage wordTypeList={wordTypeList} chosenWords={chosenWords} handleAddWordClick={handleAddWordButtonClick} handleGenerateStoryClick={() => setActivePage('story')}></WordEntryPage>
-            break;
-        case Pages.STORY:
-            pageContent = <StoryPage chosenWords={chosenWords} wordTypeList={wordTypeList}></StoryPage>
-            break;
-        default:
-            throw new Error('Invalid page');
-    }
+    
 
     return (
         <>
         <Header></Header>
-        {pageContent}
+        <AppContent wordTypeList={wordTypeList} chosenWords={chosenWords} handleAddWordButtonClick={handleAddWordButtonClick} handleStartAddingWordsButtonClick={() => setActivePage('word_entry')} handleGenerateStoryClick={() => setActivePage('story')}pages={Pages} activePage={activePage}></AppContent>
         </>
     );
 
