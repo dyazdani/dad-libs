@@ -1,5 +1,3 @@
-import Button from "../common/Button";
-
 export default function WordEntryPage({chosenWords, wordTypeList, handleAddWordClick, handleGenerateStoryClick}) {
     let currentWordType = wordTypeList[chosenWords.length];
 
@@ -8,13 +6,13 @@ export default function WordEntryPage({chosenWords, wordTypeList, handleAddWordC
             <div>
                 <label htmlFor="word">{currentWordType}: </label>
                 <input type="text" id="word" name="word"></input>
-                <Button onClick={handleAddWordClick} buttonText='Add Word'></Button>
+                <button type="button" onClick={handleAddWordClick}>Add Word</button>
             </div>
 
         )
     } else {
         return (
-            <Button onClick={handleGenerateStoryClick} buttonText="Generate Story!"></Button>
+            <button type="button" onClick={handleGenerateStoryClick}>Generate Story!</button>
         )
     }
     
