@@ -3,13 +3,13 @@ const story = ['One of the best things about being a dad are the ', `. People do
 export default function StoryPage({chosenWords}) {
     const storyDividedInElements = story.map((part, index) => {
         return (
-            <span key={index}>{part}</span>
+            <span key={'story-part-' + index}>{part}</span>
         );
     });
 
     const chosenWordsInElements = chosenWords.map((word, index) => {
         return (
-            <span key={index}><strong>{word}</strong></span>
+            <span key={'chosen-word-' + index}><strong>{word}</strong></span>
         );
     });
 

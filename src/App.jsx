@@ -43,10 +43,6 @@ const App = () => {
         }
     }    
 
-
-
-    
-
     return (
         <>
         <Header subheadings={Subheadings} activePage={activePage} pages={Pages}></Header>
