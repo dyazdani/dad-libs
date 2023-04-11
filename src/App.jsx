@@ -9,7 +9,7 @@ import WordEntryPage from './components/word_entry/WordEntryPage';
 const wordTypeList = ['Plural Noun', 'Adjective', 'Noun', 'Adjective', 'Plural Body Part', 'Plural Noun', 'Verb Ending in -ing', 'Plural Noun', 'Verb', 'Noun', 'Verb', 'Noun', 'Verb Ending in -ing', 'Plural Noun', 'Celebrity']
 
 const App = () => {
-    const [activePage, setActivePage] = useState('word_entry');
+    const [activePage, setActivePage] = useState('start');
     const [chosenWords, setChosenWords] = useState([]);
 
     function handleStartPageButtonClick() {
