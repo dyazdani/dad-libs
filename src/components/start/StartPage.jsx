@@ -1,9 +1,11 @@
 import Button from "../common/Button"
 
-export default function StartPage() {
+export default function StartPage({handleClick}) {
     return (
-        <Button onClick={handleCLick}>
-            Start Adding Words!
-        </Button>
-    )
+        <div>
+            <Button onClick={handleClick} buttonText='Start Adding Words!'>
+            </Button>
+        </div>
+        
+    );
 }
