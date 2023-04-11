@@ -2,6 +2,10 @@ import Button from "../common/Button";
 
 export default function WordEntryPage({wordTypeList, handleClick}) {
     return (
-        <Button onClick={handleClick} buttonText='Add Word'></Button>
+            <form>
+                <label></label>
+                <input></input>
+                <Button onClick={handleClick} buttonText='Add Word'></Button>
+            </form>
     )
 }
