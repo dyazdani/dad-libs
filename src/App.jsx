@@ -7,7 +7,10 @@ import StoryPage from './components/story/StoryPage';
 import WordEntryPage from './components/word_entry/WordEntryPage';
 
 const App = () => {
-    return <div>Hello World</div>
+    
+    return (
+
+    );
 }
 
 export default App;
