@@ -36,7 +36,7 @@ const App = () => {
 
     if (activePage === 'story') {
         return (
-            <StoryPage chosenWords={chosenWords}></StoryPage>
+            <StoryPage chosenWords={chosenWords} wordTypeList={wordTypeList}></StoryPage>
         );
     }
 
