@@ -1,7 +1,7 @@
 {
-  "name": "mad-libs",
+  "name": "dad-libs",
   "version": "1.0.0",
-  "description": "App for playing mad libs",
+  "description": "App for playing dad libs",
   "main": "index.js",
   "scripts": {
     "test": "jest",
