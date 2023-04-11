@@ -21,24 +21,27 @@ const App = () => {
         setChosenWords(newChosenWords);
     }    
 
+    let pageContent;
 
     if (activePage === 'start') {
-        return (
-            <StartPage handleClick={handleStartPageButtonClick}></StartPage>
-        );
+        pageContent = <StartPage handleClick={handleStartPageButtonClick}></StartPage>;
     }
 
     if (activePage === 'word_entry') {
-        return (
-            <WordEntryPage wordTypeList={wordTypeList} handleClick={handleAddWordButtonClick}></WordEntryPage> //TODO: made handleClick an anonymous func to pass argument
-        );
+        pageContent = <WordEntryPage wordTypeList={wordTypeList} handleClick={handleAddWordButtonClick}></WordEntryPage> //TODO: made handleClick an anonymous func to pass argument
+
     }
 
     if (activePage === 'story') {
-        return (
-            <StoryPage chosenWords={chosenWords} wordTypeList={wordTypeList}></StoryPage>
-        );
+        pageContent = <StoryPage chosenWords={chosenWords} wordTypeList={wordTypeList}></StoryPage>
     }
+
+    return (
+        <>
+        <Header></Header>
+        {pageContent}
+        </>
+    );
 
 }
 
