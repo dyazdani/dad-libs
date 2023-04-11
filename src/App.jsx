@@ -6,12 +6,21 @@ import StartPage from './components/start/StartPage';
 import StoryPage from './components/story/StoryPage';
 import WordEntryPage from './components/word_entry/WordEntryPage';
 
+const wordTypeList = ['Plural Noun', 'Adjective', 'Noun', 'Adjective', 'Plural Body Part', 'Plural Noun', 'Verb Ending in -ing', 'Plural Noun', 'Verb', 'Noun', 'Verb', 'Noun', 'Verb Ending in -ing', 'Plural Noun', 'Celebrity']
+
 const App = () => {
     const [activePage, setActivePage] = useState('start');
+    const [chosenWords, setChosenWords] = useState([]);
 
     function handleStartPageButtonClick() {
         setActivePage('word_entry');
     }
+
+    function handleAddWordButtonClick(word) {
+        const newChosenWords = [...chosenWords, word];
+        setChosenWords(newChosenWords);
+    }    
+
 
     if (activePage === 'start') {
         return (
@@ -21,7 +30,7 @@ const App = () => {
 
     if (activePage === 'word_entry') {
         return (
-            <WordEntryPage></WordEntryPage>
+            <WordEntryPage wordTypeList={wordTypeList} handleClick={handleAddWordButtonClick}></WordEntryPage> //TODO: made handleClick an anonymous func to pass argument
         );
     }
 
