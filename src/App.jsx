@@ -14,6 +14,12 @@ const Pages = {
     STORY: 'story'
   }
 
+const Subheadings = {
+    START: 'Ad lib a story about dads, dadding, and dad-tastic shenanigans',
+    WORD_ENTRY: 'Enter the type of word indicated, then press the "Add Word" button. Keep adding words until you see the "Generate Story!" button. Press that for your complete dad story.',
+    STORY: `Enjoy your rockin' dad story! The words you added are in bold.`
+}
+
 const App = () => {
     const [activePage, setActivePage] = useState(Pages.START);
     const [chosenWords, setChosenWords] = useState([]);
@@ -37,11 +43,13 @@ const App = () => {
         }
     }    
 
+
+
     
 
     return (
         <>
-        <Header></Header>
+        <Header subheadings={Subheadings} activePage={activePage} pages={Pages}></Header>
         <AppContent wordTypeList={wordTypeList} chosenWords={chosenWords} handleAddWordButtonClick={handleAddWordButtonClick} handleStartAddingWordsButtonClick={() => setActivePage('word_entry')} handleGenerateStoryClick={() => setActivePage('story')}pages={Pages} activePage={activePage}></AppContent>
         </>
     );
