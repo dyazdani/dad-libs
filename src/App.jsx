@@ -84,10 +84,27 @@ const App = () => {
 
     return (
         <>
-        <Header subheadings={Subheadings} activePage={activePage} pages={Pages}></Header>
-        {activePage === Pages.START && <StartPage handleClick={() => setActivePage(Pages.WORD_ENTRY)}></StartPage>}
-        {activePage === Pages.WORD_ENTRY && <WordEntryPage wordTypes={wordTypes} chosenWords={chosenWords} handleAddWordClick={handleAddWordButtonClick} handleGenerateStoryClick={() => setActivePage(Pages.STORY)}></WordEntryPage>}
-        {activePage === Pages.STORY && <StoryPage story={story} chosenWords={chosenWords}></StoryPage>}
+            <Header 
+                subheadings={Subheadings} 
+                activePage={activePage} 
+                pages={Pages}>
+            </Header>
+            {activePage === Pages.START && 
+                <StartPage 
+                    handleClick={() => setActivePage(Pages.WORD_ENTRY)}>
+                </StartPage>}
+            {activePage === Pages.WORD_ENTRY && 
+                <WordEntryPage 
+                    wordTypes={wordTypes} 
+                    chosenWords={chosenWords} 
+                    handleAddWordClick={handleAddWordButtonClick} 
+                    handleGenerateStoryClick={() => setActivePage(Pages.STORY)}>
+                </WordEntryPage>}
+            {activePage === Pages.STORY && 
+                <StoryPage 
+                    story={story} 
+                    chosenWords={chosenWords}>
+                </StoryPage>}
         </>
     );
 
