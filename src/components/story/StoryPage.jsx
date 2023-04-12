@@ -1,5 +1,5 @@
 export default function StoryPage({chosenWords, story}) {
-    const {segments, title} = story;
+    const {segments, title, startsWithChosenWord} = story;
 
     const titleElement = <h4>{title}</h4>;
     const storySegmentsInElements = segments.map((part, index) => {
@@ -16,7 +16,7 @@ export default function StoryPage({chosenWords, story}) {
 
     function makeStory() {
         let finalStory = [];
-        if (story.startsWithChosenWord) {
+        if (startsWithChosenWord) {
             for (let i = 0; i < chosenWordsInElements.length; i++) {
                 finalStory.push(chosenWordsInElements[i]);
                 finalStory.push(storySegmentsInElements[i]);

@@ -4,7 +4,6 @@ import Header from './components/common/Header';
 import StartPage from './components/start/StartPage';
 import StoryPage from './components/story/StoryPage';
 import WordEntryPage from './components/word_entry/WordEntryPage';
-import AppContent from './components/AppContent';
 
 const story = {
     title: `"Being a Dad"`,
@@ -86,7 +85,9 @@ const App = () => {
     return (
         <>
         <Header subheadings={Subheadings} activePage={activePage} pages={Pages}></Header>
-        <AppContent story={story} wordTypes={wordTypes} chosenWords={chosenWords} handleAddWordButtonClick={handleAddWordButtonClick} handleStartAddingWordsButtonClick={() => setActivePage('word_entry')} handleGenerateStoryClick={() => setActivePage('story')}pages={Pages} activePage={activePage}></AppContent>
+        {activePage === Pages.START && <StartPage handleClick={() => setActivePage(Pages.WORD_ENTRY)}></StartPage>}
+        {activePage === Pages.WORD_ENTRY && <WordEntryPage wordTypes={wordTypes} chosenWords={chosenWords} handleAddWordClick={handleAddWordButtonClick} handleGenerateStoryClick={() => setActivePage(Pages.STORY)}></WordEntryPage>}
+        {activePage === Pages.STORY && <StoryPage story={story} chosenWords={chosenWords}></StoryPage>}
         </>
     );
 
