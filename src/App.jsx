@@ -6,7 +6,47 @@ import StoryPage from './components/story/StoryPage';
 import WordEntryPage from './components/word_entry/WordEntryPage';
 import AppContent from './components/AppContent';
 
-const wordTypeList = ['Plural Noun', 'Adjective', 'Noun', 'Adjective', 'Plural Body Part', 'Plural Noun', 'Verb Ending in -ing', 'Plural Noun', 'Verb', 'Noun', 'Verb', 'Noun', 'Verb Ending in -ing', 'Plural Noun', 'Celebrity']
+const story = {
+    title: `"Being a Dad"`,
+    startsWithChosenWord: false,
+    segments: [
+        'One of the best things about being a dad are the ', 
+        `. People don’t talk about that very much. But, man, I love kids. Without them, life would be like a(n) `, 
+        ' ', 
+        `. Though it's not always easy. Sometimes they do make you feel `,
+        '. By that I mean, kids are always sticking their ',
+        ' in ',
+        ', and ',
+        ' their ',
+        `, and it's enough to make a dad want to `,
+        ' a ',
+        '. But you got to love kids. Even when they tell to go ',
+        ' a(n) ',
+        '. Hahaha…yeah. I admit that living with them is sometimes like ',
+        ' ',
+        ' with ',
+        `, but I wouldn’t trade being a dad for the world.`
+    ],
+    wordTypes: [
+        'Plural Noun',
+        'Adjective',
+        'Noun', 
+        'Adjective',
+        'Plural Body Part',
+        'Plural Noun',
+        'Verb Ending in -ing',
+        'Plural Noun',
+        'Verb',
+        'Noun',
+        'Verb',
+        'Noun',
+        'Verb Ending in -ing',
+        'Plural Noun',
+        'Celebrity'
+    ],
+}
+
+const {wordTypes} = story;
 
 const Pages = {
     START: 'start',
@@ -35,7 +75,7 @@ const App = () => {
  
     const handleAddWordButtonClick = (e) => {
         e.preventDefault();        
-        if (chosenWords.length < wordTypeList.length - 1) {
+        if (chosenWords.length < wordTypes.length - 1) {
             addWord();
         } else {
             addWord();
@@ -46,7 +86,7 @@ const App = () => {
     return (
         <>
         <Header subheadings={Subheadings} activePage={activePage} pages={Pages}></Header>
-        <AppContent wordTypeList={wordTypeList} chosenWords={chosenWords} handleAddWordButtonClick={handleAddWordButtonClick} handleStartAddingWordsButtonClick={() => setActivePage('word_entry')} handleGenerateStoryClick={() => setActivePage('story')}pages={Pages} activePage={activePage}></AppContent>
+        <AppContent story={story} wordTypes={wordTypes} chosenWords={chosenWords} handleAddWordButtonClick={handleAddWordButtonClick} handleStartAddingWordsButtonClick={() => setActivePage('word_entry')} handleGenerateStoryClick={() => setActivePage('story')}pages={Pages} activePage={activePage}></AppContent>
         </>
     );
 

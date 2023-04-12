@@ -1,9 +1,10 @@
-const story = ['One of the best things about being a dad are the ', `. People don’t talk about that very much. But, man, I love kids. Without them, life would be like a(n) `, ' ', `. Though it's not always easy. Sometimes they do make you feel `, '. By that I mean, kids are always sticking their ', ' in ', ', and ', ' their ', `, and it's enough to make a dad want to `, ' a ', '. But you got to love kids. Even when they tell to go ', ' a(n) ', '. Hahaha…yeah. I admit that living with them is sometimes like ', ' ', ' with ', `, but I wouldn’t trade being a dad for the world.`]
+export default function StoryPage({chosenWords, story}) {
+    const {segments, title} = story;
 
-export default function StoryPage({chosenWords}) {
-    const storyDividedInElements = story.map((part, index) => {
+    const titleElement = <h4>{title}</h4>;
+    const storySegmentsInElements = segments.map((part, index) => {
         return (
-            <span key={'story-part-' + index}>{part}</span>
+            <span key={'segment-' + index}>{part}</span>
         );
     });
 
@@ -15,11 +16,19 @@ export default function StoryPage({chosenWords}) {
 
     function makeStory() {
         let finalStory = [];
-        for (let i = 0; i < chosenWordsInElements.length; i++) {
-            finalStory.push(storyDividedInElements[i]);
-            finalStory.push(chosenWordsInElements[i]);
-        } 
-        finalStory.push(storyDividedInElements[storyDividedInElements.length - 1]);
+        if (story.startsWithChosenWord) {
+            for (let i = 0; i < chosenWordsInElements.length; i++) {
+                finalStory.push(chosenWordsInElements[i]);
+                finalStory.push(storySegmentsInElements[i]);
+            } 
+        } else {
+            for (let i = 0; i < chosenWordsInElements.length; i++) {
+                finalStory.push(storySegmentsInElements[i]);
+                finalStory.push(chosenWordsInElements[i]);
+            } 
+            finalStory.push(storySegmentsInElements[storySegmentsInElements.length - 1]);
+        }        
+        finalStory.unshift(titleElement);
 
         return finalStory;
     }
