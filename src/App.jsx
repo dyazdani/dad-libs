@@ -79,7 +79,8 @@ const App = () => {
       (object) => object.value === null
     );
     newContents[currentStorySlotIndex].value = word;
-    setStory(newStory);
+    const finalStory = { title: newStory.title, contents: newContents };
+    setStory(finalStory);
   };
 
   return (
@@ -97,9 +98,7 @@ const App = () => {
           handleGenerateStoryClick={() => setActivePage(Pages.STORY)}
         ></WordEntryPage>
       )}
-      {activePage === Pages.STORY && (
-        <StoryPage story={story} chosenWords={chosenWords}></StoryPage>
-      )}
+      {activePage === Pages.STORY && <StoryPage story={story}></StoryPage>}
     </>
   );
 };
