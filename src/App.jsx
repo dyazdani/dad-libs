@@ -61,13 +61,6 @@ const Pages = {
   STORY: "story",
 };
 
-const Subheadings = {
-  START: "Ad lib a story about dads, dadding, and dad-tastic shenanigans",
-  WORD_ENTRY:
-    'Enter the type of word indicated, then press the "Add Word" button. Keep adding words until you see the "Generate Story!" button. Press that for your complete dad story.',
-  STORY: `Enjoy your rockin' dad story! The words you added are in bold.`,
-};
-
 function cloneStory(story) {
   const newStory = {};
   newStory.title = story.title.map((entry) => ({ ...entry }));
@@ -91,11 +84,7 @@ const App = () => {
 
   return (
     <>
-      <Header
-        subheadings={Subheadings}
-        activePage={activePage}
-        pages={Pages}
-      ></Header>
+      <Header activePage={activePage} pages={Pages}></Header>
       {activePage === Pages.START && (
         <StartPage
           handleClick={() => setActivePage(Pages.WORD_ENTRY)}
