@@ -1,26 +1,37 @@
+import { useState } from "react";
+
 export default function WordEntryPage({
-  chosenWords,
-  wordTypes,
-  handleAddWordClick,
+  story,
+  handleSubmit,
   handleGenerateStoryClick,
 }) {
-  let currentWordType = wordTypes[chosenWords.length];
-
-  if (chosenWords.length < wordTypes.length) {
+  const [word, setWord] = useState(null);
+  if (story.contents.some((element) => element.value === null)) {
     return (
-      <div>
-        <label htmlFor="word">{currentWordType}: </label>
-        <input type="text" id="word" name="word"></input>
-        <button type="button" onClick={handleAddWordClick}>
-          Add Word
-        </button>
-      </div>
-    );
-  } else {
-    return (
-      <button type="button" onClick={handleGenerateStoryClick}>
-        Generate Story!
-      </button>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit(word);
+          setWord(null);
+        }}
+      >
+        <label htmlFor="word">TODO: CHANGE THIS TO DISPLAY WORD TYPE: </label>
+        <input
+          onChange={(e) => {
+            setWord(e.target.value);
+          }}
+          type="text"
+          id="word"
+          name="word"
+          value={word || ""}
+        ></input>
+        <button>Add Word</button>
+      </form>
     );
   }
+  return (
+    <button type="button" onClick={handleGenerateStoryClick}>
+      Generate Story!
+    </button>
+  );
 }
