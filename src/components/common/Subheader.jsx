@@ -21,5 +21,5 @@ export default function Subheader({ pages, activePage }) {
 
   const subheaderText = getSubheaderText();
 
-  return <h3>{subheaderText}</h3>;
+  return <h2>{subheaderText}</h2>;
 }
