@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const removeSnakeCase = (string) => {
   let finalString = string.replace("_", " ");
-  finalString = finalString.toUpperCase();
   return finalString;
 };
 
@@ -20,6 +19,7 @@ export default function WordEntryPage({
   if (story.contents.some((element) => element.value === null)) {
     return (
       <form
+        className="word-entry-form"
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit(word);
@@ -27,7 +27,7 @@ export default function WordEntryPage({
         }}
       >
         <label htmlFor="word">
-          {removeSnakeCase(currentChosenWordTypeObject.type) + ": "}
+          {removeSnakeCase(currentChosenWordTypeObject.type)}
         </label>
         <input
           onChange={(e) => {
