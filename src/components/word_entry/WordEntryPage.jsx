@@ -43,7 +43,11 @@ export default function WordEntryPage({
     );
   }
   return (
-    <button type="button" onClick={handleGenerateStoryClick}>
+    <button
+      className="cta-button"
+      type="button"
+      onClick={handleGenerateStoryClick}
+    >
       Generate Story!
     </button>
   );

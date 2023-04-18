@@ -30,14 +30,16 @@ header h2 {
   font-size: 1.2em;
 }
 
-/* -------- Start Page ---------------------------------------------------------*/
+/* -------- Reused Styles ---------------------------------------------------------*/
 
-.cta {
+.centered {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
 }
+
+/* -------- Start Page ---------------------------------------------------------*/
 
 .cta-button {
   border: none;

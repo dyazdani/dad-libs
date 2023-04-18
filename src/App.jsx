@@ -86,19 +86,21 @@ const App = () => {
   return (
     <>
       <Header activePage={activePage} pages={Pages}></Header>
-      {activePage === Pages.START && (
-        <StartPage
-          handleClick={() => setActivePage(Pages.WORD_ENTRY)}
-        ></StartPage>
-      )}
-      {activePage === Pages.WORD_ENTRY && (
-        <WordEntryPage
-          story={story}
-          handleSubmit={handleSubmit}
-          handleGenerateStoryClick={() => setActivePage(Pages.STORY)}
-        ></WordEntryPage>
-      )}
-      {activePage === Pages.STORY && <StoryPage story={story}></StoryPage>}
+      <div className="centered">
+        {activePage === Pages.START && (
+          <StartPage
+            handleClick={() => setActivePage(Pages.WORD_ENTRY)}
+          ></StartPage>
+        )}
+        {activePage === Pages.WORD_ENTRY && (
+          <WordEntryPage
+            story={story}
+            handleSubmit={handleSubmit}
+            handleGenerateStoryClick={() => setActivePage(Pages.STORY)}
+          ></WordEntryPage>
+        )}
+        {activePage === Pages.STORY && <StoryPage story={story}></StoryPage>}
+      </div>
     </>
   );
 };
