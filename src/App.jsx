@@ -88,18 +88,16 @@ const App = () => {
       <Header activePage={activePage} pages={Pages}></Header>
       <div className="centered">
         {activePage === Pages.START && (
-          <StartPage
-            handleClick={() => setActivePage(Pages.WORD_ENTRY)}
-          ></StartPage>
+          <StartPage handleClick={() => setActivePage(Pages.WORD_ENTRY)} />
         )}
         {activePage === Pages.WORD_ENTRY && (
           <WordEntryPage
             story={story}
             handleSubmit={handleSubmit}
             handleGenerateStoryClick={() => setActivePage(Pages.STORY)}
-          ></WordEntryPage>
+          />
         )}
-        {activePage === Pages.STORY && <StoryPage story={story}></StoryPage>}
+        {activePage === Pages.STORY && <StoryPage story={story} />}
       </div>
     </>
   );
