@@ -13,9 +13,7 @@ export default function StoryPage({ story }) {
           element.type === "string" ? (
             <span key={"story-part-" + index}>{element.value}</span>
           ) : (
-            <span key={"chosen-word-" + index}>
-              <strong>{element.value}</strong>
-            </span>
+            <strong key={"chosen-word-" + index}>{element.value}</strong>
           )
         )}
       </p>

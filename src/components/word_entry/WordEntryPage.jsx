@@ -26,15 +26,13 @@ export default function WordEntryPage({
           setWord(null);
         }}
       >
-        <label htmlFor="word">
+        <label htmlFor="word-entry-input">
           {removeSnakeCase(currentChosenWordTypeObject.type)}
         </label>
         <input
-          onChange={(e) => {
-            setWord(e.target.value);
-          }}
+          onChange={(e) => setWord(e.target.value)}
           type="text"
-          id="word"
+          id="word-entry-input"
           name="word"
           value={word || ""}
         ></input>
