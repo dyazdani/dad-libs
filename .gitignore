@@ -1,5 +1,7 @@
-# VS Code configurations
+# VS Code and extensions configurations
 .vscode/
+.eslintrc.json
+.prettierrc
 
 **/.DS_Store
 
