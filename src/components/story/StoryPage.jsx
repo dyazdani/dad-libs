@@ -9,16 +9,15 @@ export default function StoryPage({ story }) {
         ))}
       </h4>
       <p>
-        {story.contents.map((element, index) => {
-          if (element.type !== "string") {
-            return (
-              <span key={"chosen-word-" + index}>
-                <strong>{element.value}</strong>
-              </span>
-            );
-          }
-          return <span key={"story-part-" + index}>{element.value}</span>;
-        })}
+        {story.contents.map((element, index) =>
+          element.type === "string" ? (
+            <span key={"story-part-" + index}>{element.value}</span>
+          ) : (
+            <span key={"chosen-word-" + index}>
+              <strong>{element.value}</strong>
+            </span>
+          )
+        )}
       </p>
     </>
   );
