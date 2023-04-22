@@ -23,4 +23,23 @@ describe("Start page", () => {
 
       expect(subheader).toBeDefined();
     });
+  test("Button renders with correct text", () => {
+    render(<App />);
+
+    const button = screen.getByText("Start Adding Words!");
+
+    expect(button).toBeDefined();
+  });
+  test("Button changes page to word entry page when clicked", async () => {
+    render(<App />);
+
+    const button = screen.getByText("Start Adding Words!");
+
+    userEvent.click(button);
+    const addWordButton = await screen.findByText("Add Word");
+    expect(addWordButton).toBeDefined();
+
+    const buttonAgain = screen.queryByText("Start Adding Words!");
+    expect(buttonAgain).toBeNull();
+  });
 });
