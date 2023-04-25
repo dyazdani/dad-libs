@@ -1,10 +1,8 @@
-import Subheader from "./Subheader";
-
-export default function Header({ pages, activePage }) {
+export default function Header() {
   return (
-    <header>
+    <header className="top-header">
       <h1>Dad Libs</h1>
-      <Subheader pages={pages} activePage={activePage}></Subheader>
+      <p>Ad lib a story about dads, dadding, and dad-tastic shenanigans</p>
     </header>
   );
 }
