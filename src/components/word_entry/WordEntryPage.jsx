@@ -17,6 +17,7 @@ export default function WordEntryPage({
   );
 
   if (story.contents.some((element) => element.value === null)) {
+    console.log("not done adding words yet");
     return (
       <form
         className="word-entry-form"
@@ -41,6 +42,7 @@ export default function WordEntryPage({
       </form>
     );
   }
+  console.log("All words added. Generate story time.");
   return (
     <button
       className="cta-button"
