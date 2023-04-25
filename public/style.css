@@ -110,11 +110,22 @@ body {
   text-align: center;
 }
 
-/*TODO:
-- Story Page:
-- center align the text
-- wrap it in a card with a border of some sort
-- add light-green color background to all the selected words
-- mess with the line-height, font-size, etc
-- add a header to the form
-- in the header, include h3 "Enter Words", and a p with instructions */
+/* -------- Story Page ---------------------------------------------------------*/
+.story-card {
+  margin: 30px;
+  background: #fcdc4d;
+  border-radius: 7px;
+  box-shadow: gray 2px 2px 6px;
+  padding: 20px;
+  line-height: 3em;
+}
+
+.story-card strong {
+  background: #3ddc97;
+}
+
+h4 {
+  font-size: 1.25em;
+  text-decoration: underline;
+  text-align: center;
+}

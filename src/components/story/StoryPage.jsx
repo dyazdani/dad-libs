@@ -2,7 +2,7 @@ export default function StoryPage({ story }) {
   const { contents, title } = story;
 
   return (
-    <>
+    <div className="story-card">
       <h4>
         {story.title.map((element, index) => (
           <span key={"title-" + index}>{element.value}</span>
@@ -17,6 +17,6 @@ export default function StoryPage({ story }) {
           )
         )}
       </p>
-    </>
+    </div>
   );
 }
