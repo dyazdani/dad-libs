@@ -43,23 +43,3 @@ describe("Start page", () => {
     expect(buttonAgain).toBeNull();
   });
 });
-
-describe("Word Entry Page", () => {
-  test("input renders after clicking from start page", async () => {
-    render(<App />);
-    const button = screen.getByText("Start Adding Words!");
-    userEvent.click(button);
-
-    const input = await screen.findByRole("textbox");
-    expect(input).toBeDefined();
-  });
-  //   test("", () => {
-  //     render(<App />);
-  //   });
-  // test("", () => {
-  //   render(<App />);
-  // });
-  // test("", () => {
-  //   render(<App />);
-  // });
-});

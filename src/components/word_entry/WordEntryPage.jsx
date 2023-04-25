@@ -35,6 +35,7 @@ export default function WordEntryPage({
           id="word-entry-input"
           name="word"
           value={word || ""}
+          placeholder="Enter word here"
         ></input>
         <button>Add Word</button>
       </form>
