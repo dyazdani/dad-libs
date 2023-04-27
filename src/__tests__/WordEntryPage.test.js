@@ -1,21 +1,38 @@
 import React from "react";
-import { useState } from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import WordEntryPage from "../components/word_entry/WordEntryPage";
 import App from "../App";
 
-let word = null;
+const getStoryWithBlanks = (withBlankInTitle, arrayOfWordsToInsert) => {
+  const story = {};
 
-let story = {
-  title: [
-    {
-      type: "string",
-      value: "Being Mad",
-    },
-  ],
-  contents: [
+  if (withBlankInTitle === true) {
+    story.title = [
+      {
+        type: "string",
+        value: "Being ",
+      },
+      {
+        type: "adjective",
+        value: null,
+      },
+    ];
+  } else if (withBlankInTitle === false) {
+    story.title = [
+      {
+        type: "string",
+        value: "Being Mad",
+      },
+    ];
+  } else {
+    throw new Error("withBlankInTitle argument must be a Boolean value.");
+  }
+
+  console.dir(story.title);
+
+  const contents = [
     {
       type: "string",
       value: "Being mad is like being ",
@@ -27,15 +44,7 @@ let story = {
     {
       type: "string",
       value:
-        ". People don’t talk about that very much. When you're mad, you're a(an) ",
-    },
-    {
-      type: "adjective",
-      value: null,
-    },
-    {
-      type: "string",
-      value: " ",
+        ". People don’t talk about that very much. When you're mad, you're like a(an) ",
     },
     {
       type: "noun",
@@ -43,38 +52,28 @@ let story = {
     },
     {
       type: "string",
-      value: ". But being mad is better than having to eat a bucket of ",
-    },
-    {
-      type: "plural_noun",
-      value: null,
-    },
-    {
-      type: "string",
       value: ".",
     },
-  ],
-};
+  ];
 
-function cloneStory(story) {
-  const newStory = {};
-  newStory.title = story.title.map((entry) => ({ ...entry }));
-  newStory.contents = story.contents.map((entry) => ({ ...entry }));
-  return newStory;
-}
+  for (let i = 0; i < arrayOfWordsToInsert.length; i++) {
+    const titleObjectWithNullValue = story.title.find(
+      (object) => object.value === null
+    );
+    if (titleObjectWithNullValue) {
+      titleObjectWithNullValue.value = arrayOfWordsToInsert[i];
+      continue;
+    }
 
-const handleSubmit = (word) => {
-  const newStory = cloneStory(story);
-  console.log(newStory);
-  const newContents = newStory.contents;
-  console.log(newContents);
-  const currentStorySlotIndex = newContents.findIndex(
-    (object) => object.value === null
-  );
-  console.log(currentStorySlotIndex);
-  newContents[currentStorySlotIndex].value = word;
-  const finalStory = { title: newStory.title, contents: newContents };
-  story = finalStory;
+    const nextObjectWithNullValue = contents.find(
+      (object) => object.value === null
+    );
+    nextObjectWithNullValue.value = arrayOfWordsToInsert[i];
+  }
+
+  story.contents = contents;
+
+  return story;
 };
 
 const handleGenerateStoryClick = () => {
