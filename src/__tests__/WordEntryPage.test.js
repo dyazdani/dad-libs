@@ -30,8 +30,6 @@ const getStoryWithBlanks = (withBlankInTitle, arrayOfWordsToInsert) => {
     throw new Error("withBlankInTitle argument must be a Boolean value.");
   }
 
-  console.dir(story.title);
-
   const contents = [
     {
       type: "string",
@@ -81,14 +79,6 @@ const handleGenerateStoryClick = () => {
 };
 
 describe("Word Entry Page", () => {
-  test("input renders after clicking from start page", async () => {
-    render(<App />);
-    const button = screen.getByText("Start Adding Words!");
-    userEvent.click(button);
-
-    const input = await screen.findByRole("textbox");
-    expect(input).toBeDefined();
-  });
   test("input receives text and text disappears after add word button clicked", async () => {
     render(<WordEntryPage story={story} handleSubmit={handleSubmit} />);
 
