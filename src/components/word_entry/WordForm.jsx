@@ -30,7 +30,6 @@ export default function WordForm({ handleSubmit, story }) {
         id="word-entry-input"
         name="word"
         value={word || ""}
-        placeholder="Enter word here"
       ></input>
       <button>Add Word</button>
     </form>
