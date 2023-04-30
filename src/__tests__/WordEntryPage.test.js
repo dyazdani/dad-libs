@@ -24,7 +24,7 @@ describe("Word Entry Page", () => {
   test("input receives text and text disappears after add word button clicked", async () => {
     render(<WordEntryPage story={story} />);
 
-    const input = screen.getByRole("textbox");
+    const input = screen.getByRole("textboxr");
     await userEvent.type(input, "loud");
 
     expect(input).toHaveValue("loud");

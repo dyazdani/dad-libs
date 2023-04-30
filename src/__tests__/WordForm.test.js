@@ -17,9 +17,14 @@ const handleSubmit = (word) => {
 describe("Word Form component renders", () => {
   test("input renders", () => {
     render(<WordForm story={story} handleSubmit={handleSubmit} />);
-    console.dir(story);
 
     const input = screen.getByRole("textbox");
     expect(input).toBeDefined();
+  });
+  test("Add word button renders", () => {
+    render(<WordForm story={story} handleSubmit={handleSubmit} />);
+
+    const button = screen.getByRole("button");
+    expect(button).toBeDefined();
   });
 });
