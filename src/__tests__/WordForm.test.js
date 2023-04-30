@@ -33,10 +33,10 @@ describe("Word Form component renders", () => {
     const button = screen.getByRole("button");
     expect(button.textContent).toBe("Add Word");
   });
-  test("Label renders", () => {
+  test("Label renders without snake case", () => {
     render(<WordForm story={story} handleSubmit={handleSubmit} />);
 
-    const label = screen.getByText("adjective");
+    const label = screen.getByText("plural noun");
     expect(label).toBeDefined();
   });
 });
