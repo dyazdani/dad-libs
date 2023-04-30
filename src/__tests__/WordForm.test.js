@@ -33,4 +33,10 @@ describe("Word Form component renders", () => {
     const button = screen.getByRole("button");
     expect(button.textContent).toBe("Add Word");
   });
+  test("Label renders", () => {
+    render(<WordForm story={story} handleSubmit={handleSubmit} />);
+
+    const label = screen.getByText("adjective");
+    expect(label).toBeDefined();
+  });
 });
