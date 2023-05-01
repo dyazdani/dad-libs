@@ -8,7 +8,7 @@ import StartPage from "../components/start/StartPage";
 import StoryPage from "../components/story/StoryPage";
 import WordEntryPage from "../components/word_entry/WordEntryPage";
 
-describe("Start page", () => {
+describe("App header renders", () => {
   test("Correct text displayed in header", () => {
     render(<App />);
     const header = screen.getByText("Dad Libs");
@@ -23,12 +23,16 @@ describe("Start page", () => {
 
       expect(subheader).toBeDefined();
     });
-  test("Button renders with correct text", () => {
+});
+
+describe("Integrated testing", () => {
+  test("input renders after clicking from start page", async () => {
     render(<App />);
-
     const button = screen.getByText("Start Adding Words!");
+    userEvent.click(button);
 
-    expect(button).toBeDefined();
+    const input = await screen.findByRole("textbox");
+    expect(input).toBeDefined();
   });
   test("Button changes page to word entry page when clicked", async () => {
     render(<App />);
@@ -41,17 +45,6 @@ describe("Start page", () => {
 
     const buttonAgain = screen.queryByText("Start Adding Words!");
     expect(buttonAgain).toBeNull();
-  });
-});
-
-describe("Integrated testing", () => {
-  test("input renders after clicking from start page", async () => {
-    render(<App />);
-    const button = screen.getByText("Start Adding Words!");
-    userEvent.click(button);
-
-    const input = await screen.findByRole("textbox");
-    expect(input).toBeDefined();
   });
   // test("", () => {
   //   render(<App />);
