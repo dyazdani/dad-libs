@@ -4,6 +4,7 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import WordEntryPage from "../components/word_entry/WordEntryPage";
 import getStoryWithBlanks from "../testUtils";
+import WordForm from "../components/word_entry/WordForm";
 
 const handleGenerateStoryClick = () => {
   render(<StoryPage story={story} />);
@@ -28,15 +29,11 @@ describe("Page renders", () => {
 
     expect(instructions).toBeDefined();
   });
-  //   test("WordForm component renders", async () => {
-  //     render(<WordEntryPage story={story} />);
+  test("WordForm component renders", () => {
+    render(<WordEntryPage story={story} />);
 
-  //     const input = screen.getByRole("textbox");
-  //     await userEvent.type(input, "loud");
+    const input = screen.getByRole("textbox");
 
-  //     expect(input).toHaveValue("loud");
-  //     const addWordButton = screen.getByRole("button");
-  //     await userEvent.click(addWordButton);
-  //     expect(input).toHaveValue("");
-  //   });
+    expect(input).toBeDefined();
+  });
 });
