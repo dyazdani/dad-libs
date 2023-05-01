@@ -56,4 +56,36 @@ describe("Integrated testing", () => {
   // test("", () => {
   //   render(<App />);
   // });
+
+  // TODO: troubleshoot for these tests
+  //   test("Label renders on load of word entry page and after add word button clicked", () => {
+  //   });
+  //   test("Generate story button renders after all words have been entered", async () => {
+  //     render(
+  //       <WordEntryPage
+  //         story={story}
+  //         handleSubmit={handleSubmit}
+  //         handleGenerateStoryClick={handleGenerateStoryClick}
+  //       />
+  //     );
+
+  //     const input = screen.getByPlaceholderText("Enter word here");
+  //     await userEvent.type(input, "loud");
+
+  //     const addWordButton = screen.getByRole("button");
+  //     await userEvent.click(addWordButton);
+
+  //     await userEvent.type(input, "bad");
+  //     await userEvent.click(addWordButton);
+
+  //     await userEvent.type(input, "cat");
+  //     await userEvent.click(addWordButton);
+
+  //     console.log(story);
+  //     await userEvent.type(input, "dogs");
+  //     await userEvent.click(addWordButton);
+
+  //     const generateStoryButton = screen.findByText("Generate Story!");
+  //     expect(generateStoryButton).toBeDefined();
+  //   });
 });
