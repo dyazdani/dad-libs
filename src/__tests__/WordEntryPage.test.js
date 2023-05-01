@@ -1,10 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import userEvent from "@testing-library/user-event";
 import WordEntryPage from "../components/word_entry/WordEntryPage";
 import getStoryWithBlanks from "../testUtils";
-import WordForm from "../components/word_entry/WordForm";
 
 const handleGenerateStoryClick = () => {
   render(<StoryPage story={story} />);
