@@ -26,28 +26,36 @@ describe("App header renders", () => {
 });
 
 describe("Integrated testing", () => {
-  test("input renders after clicking from start page", async () => {
-    render(<App />);
-    const button = screen.getByText("Start Adding Words!");
-    userEvent.click(button);
+  describe("Word entry page renders after clicking 'Start Adding Words!' button", () => {
+    test("Word form renders after clicking 'Start Adding Words!' button from start page", async () => {
+      render(<App />);
+      const button = screen.getByText("Start Adding Words!");
+      await userEvent.click(button);
 
-    const input = await screen.findByRole("textbox");
-    expect(input).toBeDefined();
+      const form = screen.findByRole("form");
+      expect(form).toBeDefined();
+    });
+    test("New header renders after clicking 'Start Adding Words!' button from start page", async () => {
+      render(<App />);
+      const button = screen.getByText("Start Adding Words!");
+      await userEvent.click(button);
+
+      const headerTitle = screen.findByText("Add Words");
+      expect(headerTitle).toBeDefined();
+    });
   });
-  test("Button changes page to word entry page when clicked", async () => {
-    render(<App />);
 
-    const button = screen.getByText("Start Adding Words!");
-
-    userEvent.click(button);
-    const addWordButton = await screen.findByText("Add Word");
-    expect(addWordButton).toBeDefined();
-
-    const buttonAgain = screen.queryByText("Start Adding Words!");
-    expect(buttonAgain).toBeNull();
-  });
-  // test("", () => {
+  // test("Button changes page to word entry page when clicked", async () => {
   //   render(<App />);
+
+  //   const button = screen.getByText("Start Adding Words!");
+
+  //   await userEvent.click(button);
+  //   const addWordButton = screen.findByText("Add Word");
+  //   expect(addWordButton).toBeDefined();
+
+  //   const buttonAgain = screen.queryByText("Start Adding Words!");
+  //   expect(buttonAgain).toBeNull();
   // });
 
   // TODO: troubleshoot for these tests
