@@ -9,6 +9,7 @@ const handleGenerateStoryClick = () => {
 };
 
 const story = getStoryWithBlanks(false, []);
+const completedStory = getStoryWithBlanks(false, ["cats", "scared"]);
 
 describe("Page renders", () => {
   test("Header title renders", () => {
@@ -33,5 +34,46 @@ describe("Page renders", () => {
     const input = screen.getByRole("textbox");
 
     expect(input).toBeDefined();
+  });
+});
+
+describe("Page renders button and new header when story is completed", () => {
+  test("Generate story button renders", () => {
+    render(
+      <WordEntryPage
+        story={completedStory}
+        handleGenerateStoryClick={handleGenerateStoryClick}
+      />
+    );
+
+    const button = screen.getByText("Generate Story!");
+
+    expect(button).toBeDefined();
+  });
+  test("New header title (<h3>) renders", () => {
+    render(
+      <WordEntryPage
+        story={completedStory}
+        handleGenerateStoryClick={handleGenerateStoryClick}
+      />
+    );
+
+    const headerTitle = screen.getByText("Press Button");
+
+    expect(headerTitle).toBeDefined();
+  });
+  test("New instructions in header render", () => {
+    render(
+      <WordEntryPage
+        story={completedStory}
+        handleGenerateStoryClick={handleGenerateStoryClick}
+      />
+    );
+
+    const instructions = screen.getByText(
+      "Press the button below to generate your dad story."
+    );
+
+    expect(instructions).toBeDefined();
   });
 });
