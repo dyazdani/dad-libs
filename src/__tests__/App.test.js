@@ -140,6 +140,38 @@ describe("Integrated testing", () => {
       const storyTitle = screen.getByText("Being a Dad");
       expect(storyTitle).toBeDefined();
     });
+    test("Story page renders with all chosen words after 'Generate Story!' button clicked", async () => {
+      render(<App />);
+      const button = screen.getByText("Start Adding Words!");
+      await userEvent.click(button);
+
+      const input = screen.getByRole("textbox");
+
+      await userEvent.type(input, "balls");
+
+      const addWordButton = screen.getByText("Add Word");
+
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "bad");
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "cat");
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "gruff");
+      await userEvent.click(addWordButton);
+
+      const generateStoryButton = screen.getByText("Generate Story!");
+      await userEvent.click(generateStoryButton);
+
+      const balls = screen.getByText("balls");
+      const bad = screen.getByText("bad");
+      const cat = screen.getByText("cat");
+      const gruff = screen.getByText("gruff");
+
+      expect(balls).toBeDefined();
+      expect(bad).toBeDefined();
+      expect(cat).toBeDefined();
+      expect(gruff).toBeDefined();
+    });
   });
 
   // test("Button changes page to word entry page when clicked", async () => {
