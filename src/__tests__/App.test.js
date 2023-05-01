@@ -8,6 +8,54 @@ import StartPage from "../components/start/StartPage";
 import StoryPage from "../components/story/StoryPage";
 import WordEntryPage from "../components/word_entry/WordEntryPage";
 
+const testStoryOne = {
+  title: [
+    {
+      type: "string",
+      value: "Being a Dad",
+    },
+  ],
+  contents: [
+    {
+      type: "string",
+      value: "One of the best things about being a dad are the ",
+    },
+    {
+      type: "plural_noun",
+      value: "balls",
+    },
+    {
+      type: "string",
+      value:
+        ". People don’t talk about that very much. But, man, I love kids. Without them, life would be like a(n) ",
+    },
+    {
+      type: "adjective",
+      value: "bad",
+    },
+    {
+      type: "string",
+      value: " ",
+    },
+    {
+      type: "noun",
+      value: "cat",
+    },
+    {
+      type: "string",
+      value: ". Though it's not always easy. Sometimes they do make you feel ",
+    },
+    {
+      type: "adjective",
+      value: "gruff",
+    },
+    {
+      type: "string",
+      value: ".",
+    },
+  ],
+};
+
 describe("App header renders", () => {
   test("Correct text displayed in header", () => {
     render(<App />);
@@ -44,6 +92,55 @@ describe("Integrated testing", () => {
       expect(headerTitle).toBeDefined();
     });
   });
+  describe("Story page renders properly after adding words", () => {
+    test("'Generate Story!' renders after words added", async () => {
+      render(<App />);
+      const button = screen.getByText("Start Adding Words!");
+      await userEvent.click(button);
+
+      const input = screen.getByRole("textbox");
+
+      await userEvent.type(input, "balls");
+
+      const addWordButton = screen.getByText("Add Word");
+
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "bad");
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "cat");
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "gruff");
+      await userEvent.click(addWordButton);
+
+      const generateStoryButton = screen.findByText("Generate Story!");
+      expect(generateStoryButton).toBeDefined();
+    });
+    test("Story page renders after 'Generate Story!' button clicked", async () => {
+      render(<App />);
+      const button = screen.getByText("Start Adding Words!");
+      await userEvent.click(button);
+
+      const input = screen.getByRole("textbox");
+
+      await userEvent.type(input, "balls");
+
+      const addWordButton = screen.getByText("Add Word");
+
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "bad");
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "cat");
+      await userEvent.click(addWordButton);
+      await userEvent.type(input, "gruff");
+      await userEvent.click(addWordButton);
+
+      const generateStoryButton = screen.getByText("Generate Story!");
+      await userEvent.click(generateStoryButton);
+
+      const storyTitle = screen.getByText("Being a Dad");
+      expect(storyTitle).toBeDefined();
+    });
+  });
 
   // test("Button changes page to word entry page when clicked", async () => {
   //   render(<App />);
@@ -70,23 +167,6 @@ describe("Integrated testing", () => {
   //       />
   //     );
 
-  //     const input = screen.getByPlaceholderText("Enter word here");
-  //     await userEvent.type(input, "loud");
-
-  //     const addWordButton = screen.getByRole("button");
-  //     await userEvent.click(addWordButton);
-
-  //     await userEvent.type(input, "bad");
-  //     await userEvent.click(addWordButton);
-
-  //     await userEvent.type(input, "cat");
-  //     await userEvent.click(addWordButton);
-
-  //     console.log(story);
-  //     await userEvent.type(input, "dogs");
-  //     await userEvent.click(addWordButton);
-
-  //     const generateStoryButton = screen.findByText("Generate Story!");
-  //     expect(generateStoryButton).toBeDefined();
+  //
   //   });
 });
