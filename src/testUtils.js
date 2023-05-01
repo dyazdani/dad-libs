@@ -23,8 +23,6 @@ const getStoryWithBlanks = (withBlankInTitle, arrayOfWordsToInsert) => {
     throw new Error("withBlankInTitle argument must be a Boolean value.");
   }
 
-  console.dir(story.title);
-
   const contents = [
     {
       type: "string",
@@ -68,5 +66,7 @@ const getStoryWithBlanks = (withBlankInTitle, arrayOfWordsToInsert) => {
 
   return story;
 };
+
+const handleSubmit = jest.fn();
 
 export default getStoryWithBlanks;

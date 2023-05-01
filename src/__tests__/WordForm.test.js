@@ -40,3 +40,34 @@ describe("Word Form component renders", () => {
     expect(label).toBeDefined();
   });
 });
+
+describe("Functions called properly when Add Word button is clicked", () => {
+  test("handleSubmit is called", async () => {
+    const user = userEvent.setup();
+
+    const handleSubmitObj = {
+      onButtonClick() {},
+    };
+    const spy = jest.spyOn(handleSubmitObj, "onButtonClick");
+
+    render(<WordForm story={story} handleSubmit={spy} />);
+
+    const button = screen.getByRole("button");
+    const input = screen.getByRole("textbox");
+    await user.type(input, "rats");
+    await user.click(button);
+
+    expect(spy).toHaveBeenCalled();
+  });
+  test("setWord sets word state", async () => {
+    const user = userEvent.setup();
+    render(<WordForm story={story} handleSubmit={handleSubmit} />);
+
+    const button = screen.getByRole("button");
+    const input = screen.getByRole("textbox");
+    await user.type(input, "rats");
+    await user.click(button);
+
+    expect(story.contents[1].value).toBe("rats");
+  });
+});
